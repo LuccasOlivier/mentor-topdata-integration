@@ -5,7 +5,7 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String matricula;
-    private String tipo; // aluno, professor, funcionário
+    private TipoPessoa tipo; // aluno, professor, funcionário, responsável
     private boolean ativo; // true se está ativo, false se inativo;
 
     // Construtor vazio (obrigatório pro Spring)
@@ -13,9 +13,9 @@ public class Pessoa {
     }
 
     // Construtor completo
-    public Pessoa(String nome, String id, String cpf, String matricula, String tipo, boolean ativo) {
-        this.nome = nome;
+    public Pessoa(String id, String nome, String cpf, String matricula, TipoPessoa tipo, boolean ativo) {
         this.id = id;
+        this.nome = nome;
         this.cpf = cpf;
         this.matricula = matricula;
         this.tipo = tipo;
@@ -56,11 +56,11 @@ public class Pessoa {
         this.matricula = matricula;
     }
 
-    public String getTipo() {
+    public TipoPessoa getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoPessoa tipo) {
         this.tipo = tipo;
     }
 
@@ -80,7 +80,7 @@ public class Pessoa {
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", matricula='" + matricula + '\'' +
-                ", tipo='" + tipo + '\'' +
+                ", tipo=" + tipo +
                 ", ativo=" + ativo +
                 '}';
     }

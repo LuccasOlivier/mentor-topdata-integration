@@ -1,8 +1,10 @@
 package br.com.educacaocriativa.mentor_leitor_facial.controller;
 
 import br.com.educacaocriativa.mentor_leitor_facial.model.Pessoa;
+import br.com.educacaocriativa.mentor_leitor_facial.model.TipoPessoa;
 import br.com.educacaocriativa.mentor_leitor_facial.service.PessoaService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,4 +26,11 @@ public class PessoaController {
     public List<Pessoa> listarPessoasAtivas() {
         return pessoaService.listarPessoasAtivas();
     }
+
+    // Busca por tipo
+    @GetMapping("/tipo/{tipo}")
+    public List<Pessoa> listarPorTipo(@PathVariable TipoPessoa tipo) {
+        return pessoaService.listarPorTipo(tipo);
+    }
+
 }
