@@ -15,9 +15,47 @@ public class PessoaService {
     public List<Pessoa> listarPessoasAtivas() {
         List<Pessoa> pessoas = new ArrayList<>();
 
-        pessoas.add(new Pessoa("Lucas Oliveira", "123", "111.111.111-11", "2023001", TipoPessoa.FUNCIONARIO, true));
-        pessoas.add(new Pessoa("Maria Oliveira", "456", "222.222.222-22", "2023002", TipoPessoa.PROFESSOR, true));
-        pessoas.add(new Pessoa("Carlos Souza", "789", "333.333.333-33", "2023003", TipoPessoa.ALUNO, true));
+        // Aluno
+        pessoas.add(new Pessoa(
+            "123", // codigoPessoa
+            "Lucas Oliveira", // nomePessoa
+            "Lucas Oliveira", // nomeCivil
+            "hash_foto_123", // fotoPessoa
+            TipoPessoa.ALUNO, // tipoPessoa
+            "ATIVO", // situacaoPessoa
+            "1", // unidade
+            true, // ativo
+            "2023001", // matricula
+            "111.111.111-11" // cpf
+        ));
+
+        // Professor/Funcionário
+        pessoas.add(new Pessoa(
+            "456",
+            "Maria Oliveira",
+            "Maria Oliveira",
+            "hash_foto_456",
+            TipoPessoa.PROFESSOR_FUNCIONARIO,
+            "ATIVO",
+            "1",
+            true,
+            "2023002",
+            "222.222.222-22"
+        ));
+
+        // Responsável (usando TODOS)
+        pessoas.add(new Pessoa(
+            "789",
+            "Carlos Souza",
+            "Carlos Souza",
+            "hash_foto_789",
+            TipoPessoa.TODOS,
+            "ATIVO",
+            "1",
+            true,
+            "2023003",
+            "333.333.333-33"
+        ));
 
         return pessoas;
     }
@@ -25,7 +63,21 @@ public class PessoaService {
     // Método para listar por tipo
     public List<Pessoa> listarPorTipo(TipoPessoa tipo) {
         return listarPessoasAtivas().stream()
-                .filter(p -> p.getTipo() == tipo)
+                .filter(p -> p.getTipoPessoa() == tipo)
+                .toList();
+    }
+
+    // Método para listar por situação
+    public List<Pessoa> listarPorSituacao(String situacao) {
+        return listarPessoasAtivas().stream()
+                .filter(p -> p.getSituacaoPessoa().equals(situacao))
+                .toList();
+    }
+
+    // Método para listar por unidade
+    public List<Pessoa> listarPorUnidade(String unidade) {
+        return listarPessoasAtivas().stream()
+                .filter(p -> p.getUnidade().equals(unidade))
                 .toList();
     }
 }
