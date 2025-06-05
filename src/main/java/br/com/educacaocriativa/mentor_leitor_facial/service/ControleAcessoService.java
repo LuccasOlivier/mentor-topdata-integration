@@ -20,7 +20,9 @@ public class ControleAcessoService {
     private LeitorFacialService leitorFacialService;
 
     public boolean validarAcesso(String codigoPessoa) {
+        System.out.println("Validando acesso para pessoa: " + codigoPessoa);
         if (!leitorFacialService.estaCadastrada(codigoPessoa)) {
+            System.out.println("Pessoa não cadastrada no leitor facial.");
             return false;
         }
 
@@ -30,7 +32,8 @@ public class ControleAcessoService {
                 .findFirst()
                 .orElse(null);
 
-        if (pessoa == null || !pessoa.isAtivo()) {
+        if (pessoa == null) {
+            System.out.println("Pessoa não encontrada ou não está ativa.");
             return false;
         }
 
@@ -38,7 +41,8 @@ public class ControleAcessoService {
     }
 
     private boolean validarPessoaPorTipo(Pessoa pessoa) {
-        if (pessoa == null) return false;
+        if (pessoa == null)
+            return false;
 
         switch (pessoa.getTipoPessoa()) {
             case ALUNO:
