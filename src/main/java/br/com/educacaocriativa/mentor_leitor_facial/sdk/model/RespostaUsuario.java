@@ -2,18 +2,20 @@ package br.com.educacaocriativa.mentor_leitor_facial.sdk.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CmdGetUserInfo extends Cmd {
-
+public class RespostaUsuario {
     @JsonProperty("enrollid")
     private long enrollid;
-
+    
+    @JsonProperty("name")
+    private String name;
+    
     @JsonProperty("backupnum")
     private int backupnum;
+    
+    @JsonProperty("admin")
+    private int admin;
 
-    public CmdGetUserInfo(String sequence) {
-        super(CmdType.GET_USER_INFO, sequence);
-    }
-
+    // Getters e Setters
     public long getEnrollid() {
         return enrollid;
     }
@@ -22,11 +24,27 @@ public class CmdGetUserInfo extends Cmd {
         this.enrollid = enrollid;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getBackupnum() {
         return backupnum;
     }
 
     public void setBackupnum(int backupnum) {
         this.backupnum = backupnum;
+    }
+
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
     }
 }

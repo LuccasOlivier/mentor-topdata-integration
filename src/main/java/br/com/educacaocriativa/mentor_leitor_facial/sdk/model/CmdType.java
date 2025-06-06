@@ -7,7 +7,9 @@ public enum CmdType {
     GET_USER_INFO("getuserinfo"),
     SET_DEV_INFO("setdevinfo"),
     DISABLE_DEVICE("disabledevice"),
-    ENABLE_DEVICE("enabledevice");
+    ENABLE_DEVICE("enabledevice"),
+    GET_STATUS("getstatus"),
+    EXPORT_DATA("exportdata"); // 
 
     private final String command;
 
