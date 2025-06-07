@@ -2,7 +2,7 @@ package br.com.educacaocriativa.mentor_leitor_facial.sdk.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.constraints.NotBlank;
@@ -13,7 +13,7 @@ import java.time.Duration;
 
 @Data
 @Validated
-@Configuration
+@Component("leitorFacialSdkConfig")
 @ConfigurationProperties(prefix = "leitorfacial.sdk")
 public class LeitorFacialConfig {
     /**
@@ -23,17 +23,15 @@ public class LeitorFacialConfig {
     private String url = "ws://localhost:7792/pub/chat";
 
     /**
-     * Timeout para operações em milissegundos
+     * Timeout para operações
      */
     @NotNull
-    @Min(1000)
     private Duration timeout = Duration.ofSeconds(10);
 
     /**
-     * Timeout para reconexão em milissegundos
+     * Timeout para reconexão
      */
     @NotNull
-    @Min(1000)
     private Duration reconnectTimeout = Duration.ofSeconds(5);
 
     /**
@@ -51,10 +49,9 @@ public class LeitorFacialConfig {
     private int maxQueueSize = 100;
 
     /**
-     * Tamanho máximo da cache em minutos
+     * Tamanho máximo da cache
      */
     @NotNull
-    @Min(1)
     private Duration cacheTimeout = Duration.ofMinutes(15);
 
     /**
@@ -65,10 +62,9 @@ public class LeitorFacialConfig {
     private int maxCommandRetries = 3;
 
     /**
-     * Intervalo entre tentativas de envio de comando em milissegundos
+     * Intervalo entre tentativas de envio de comando
      */
     @NotNull
-    @Min(100)
     private Duration retryInterval = Duration.ofSeconds(1);
 
     /**

@@ -14,14 +14,14 @@ public class ConfigTest {
 
     @Test
     public void testConfiguracao() {
-        System.out.println("IP do Leitor: " + config.getIpLeitor());
-        System.out.println("Porta: " + config.getPortaLeitor());
+        System.out.println("IP do Leitor: " + config.getIp());
+        System.out.println("Porta: " + config.getPorta());
         System.out.println("Tipo de Conexão: " + config.getTipoConexao());
         System.out.println("Caminho SDK: " + config.getCaminhoSdk());
-        
+
         // Verificações básicas
-        assert config.getIpLeitor() != null;
-        assert config.getPortaLeitor() > 0;
+        assert config.getIp() != null;
+        assert config.getPorta() > 0;
         assert config.getTipoConexao() != null;
         assert config.getCaminhoSdk() != null;
     }
